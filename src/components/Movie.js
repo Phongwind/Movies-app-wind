@@ -33,7 +33,7 @@ export default function Movie(props) {
                                     View Trailer
                                 </Button>
                                 <Button className="btn btn-lg" onClick={movie.video} style={{ marginBottom: 15, marginRight: '1%', backgroundColor: '#E6B91E', borderRadius: '50px', border: 'none', color: 'black' }}>
-                                    More Detail
+                                    See more
                                 </Button>
                                 </div>
                             </Card.Body>

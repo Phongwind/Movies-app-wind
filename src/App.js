@@ -30,7 +30,7 @@ function App() {
     )
   }
   return (
-    <div>
+    <div style={{backgroundColor: '#0D0D0D'}}>
         <NavBar/>
        <Movie movieList = {movies}/>
     </div>
