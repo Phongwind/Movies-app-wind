@@ -2,7 +2,8 @@ import React from "react";
 import {
   Button,
 } from "react-bootstrap";
-
+import ReactModal from 'react-modal'
+import YouTube from '@u-wave/react-youtube';
 
 
 import NavBar from "./components/NavBar";
@@ -11,6 +12,7 @@ import Movie from "./components/Movie";
 import Pagination from "react-js-pagination";
 
 import "./App.css";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -182,14 +184,20 @@ class App extends React.Component {
     }
   };
 
+
   renderMovieItem = movie => {
-    const { genres } = this.state;
+    const { genres } = this.state; 
+
+    let openModal = (movieId) => {
+      this.setState({ showModal: true })
+    }
     return (
       <Movie
         {...movie}
         movie={movie}
         genres={genres}
         onClickMovie={this.onClickMovie}
+        openModal={openModal}
       />
     );
   };
@@ -201,10 +209,12 @@ class App extends React.Component {
 
   handlePageChange(pageNumber) {
     console.log(`active page is ${pageNumber}`);
-    this.setState({activePage: pageNumber});
-  }
+    this.setState({ activePage: pageNumber });
+  };
 
- 
+
+
+
 
   render() {
 
@@ -273,10 +283,19 @@ class App extends React.Component {
             <div className="col-3" style={{ backgroundColor: '#171717' }}>
 
             </div>
-            
+
           </div>
         </div>
-
+        <ReactModal
+          isOpen={this.state.showModal}
+          style={{ overlay: {}, content: {} }}
+          onRequestClose={() => this.setState({ showModal: false })}
+        ><YouTube
+            video={this.state.focusedMovieCode} //i don't know how to get the right value here. Why is it a string??
+            autoplay
+            className="video"
+          />
+        </ReactModal>
       </div>
 
     );

@@ -25,7 +25,7 @@ const Movie = ({
                               <Card.Body>
                                   <Card.Title style={{ fontWeight: 'bold', fontSize: 30, color: 'white' }}>{title}</Card.Title>
                                   <span style={{ fontWeight: 'bold', fontSize: 30, color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-                                      <img src={star} /> {voteAverage}
+                                      <img src={star} alt="#" /> {voteAverage}
                                   </span>
   
                                   
