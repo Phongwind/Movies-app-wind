@@ -2,6 +2,8 @@ import React from "react";
 import {
   Button,
 } from "react-bootstrap";
+import ReactModal from 'react-modal'
+import YouTube from '@u-wave/react-youtube';
 
 
 
@@ -90,7 +92,7 @@ class App extends React.Component {
     const id = e.target.id;
     const { movies } = this.state;
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=4c5b4a5e627748117d4b24082672a9b4&page=${id}`
+      `https://api.themoviedb.org/3/movie/popular?api_key=aac8f83781435d0aaf1c687240833101&page=${id}`
     );
     const data = await response.json();
     this.setState({ movies: movies.concat(data.results), pageNumber: id });
@@ -172,7 +174,7 @@ class App extends React.Component {
   onClickMovie = async movieId => {
     console.log('movieId', movieId)
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=4c5b4a5e627748117d4b24082672a9b4`
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=aac8f83781435d0aaf1c687240833101`
     );
     const { results } = await response.json();
 
@@ -201,10 +203,10 @@ class App extends React.Component {
 
   handlePageChange(pageNumber) {
     console.log(`active page is ${pageNumber}`);
-    this.setState({activePage: pageNumber});
+    this.setState({ activePage: pageNumber });
   }
 
- 
+
 
   render() {
 
@@ -273,10 +275,19 @@ class App extends React.Component {
             <div className="col-3" style={{ backgroundColor: '#171717' }}>
 
             </div>
-            
+
           </div>
         </div>
-
+        <ReactModal
+          isOpen={this.state.showModal}
+          style={{ overlay: {}, content: {} }}
+          onRequestClose={() => this.setState({ showModal: false })}
+        ><YouTube
+            video={this.state.focusedMovieCode} //i don't know how to get the right value here. Why is it a string??
+            autoplay
+            className="video"
+          />
+        </ReactModal>
       </div>
 
     );
