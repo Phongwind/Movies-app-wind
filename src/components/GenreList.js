@@ -21,23 +21,23 @@ class GenreList extends React.Component {
                 if (this.getGenreCount(id) === 0) return null
                 return (
                     <div className="container">
-                        <div className="row">
-                            <div className="col-10">
+                        <div className="row" style={{ display: 'flex', alignItems: 'center' }}>
+                            <div className="col-10" >
                                 <Button
                                     onClick={() => this.onFilterForGenre(id)}
                                     style={{
                                         fontSize: 12,
-                                        width: '30%',
+                                        
                                         marginTop: 10,
                                         fontWeight: 'bold',
-                                        backgorund: 'none',
+                                        backgroundColor: '#0D0D0D',
                                         border: 'none'
                                     }}>
 
                                     {name}
                                 </Button>
                             </div>
-                            <div className="col-2" style={{ fontSize: 12 }}>
+                            <div className="col-2" style={{ fontSize: 12, color: 'white' }}>
                                 {this.getGenreCount(id)}
                             </div>
                         </div>
