@@ -11,7 +11,7 @@ export default function Movie(props) {
             <Card style={{ width: '50rem', backgroundColor: '#171717', borderRadius: '20px', marginBottom: '2%', marginTop: '2%' }}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-4">
+                        <div className="col-4" style={{marginTop: '2%', marginBottom: '2%'}}>
                             <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} />
                         </div>
                         <div className="col-8">
